@@ -24,22 +24,22 @@ public_users.post("/register", (req, res) => {
     // If username or password is missing
     return res.status(400).json({ message: "Username and password are required." });
   });
-  
-  // utility function to check if a user with the given username already exists
-  const doesExist = (username) => {
-    // Filter the users array for any user with the same username
-    let userswithsamename = users.filter((user) => {
-        return user.username === username;
-    });
-    // Return true if any user with the same username is found, otherwise false
-    if (userswithsamename.length > 0) {
-        return true;
-    } else {
-        return false;
-    }
-  };
-  
-
+    // utility function to check if a user with the given username already exists
+    const doesExist = (username) => {
+        // Filter the users array for any user with the same username
+        let userswithsamename = users.filter((user) => {
+            return user.username === username;
+        });
+        // Return true if any user with the same username is found, otherwise false
+        if (userswithsamename.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+      };
+      
+    
+    
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   //Write your code here
