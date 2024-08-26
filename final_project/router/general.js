@@ -42,9 +42,20 @@ public_users.post("/register", (req, res) => {
     
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
-  //Write your code here
-  res.send(JSON.stringify(books,null,4));
+    let getBooks = new Promise((resolve, reject) => {
+        // Adding some delay
+        setTimeout(() => {
+            resolve(books);
+        }, 2000); //  2-second delay
+    });
+
+    getBooks.then((bookList) => {
+        res.status(200).send(JSON.stringify(bookList, null, 4));
+    }).catch((error) => {
+        res.status(500).json({ message: "Error fetching books", error: error });
+    });
 });
+  
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
